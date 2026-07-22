@@ -2,6 +2,7 @@ import streamlit as st
 from langchain_core.messages import HumanMessage, AIMessage,ToolMessage
 import json
 
+
 class DisplayResultStreamlit:
     def __init__(self,usecase,graph,user_message):
         self.usecase= usecase
@@ -54,4 +55,3 @@ class DisplayResultStreamlit:
                     st.error(f"News not generated or File not found: {AI_NEWS_PATH}")
                 except Exception as e:
                     st.error(f"An error occured: {str(e)}")   
-        
