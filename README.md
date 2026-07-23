@@ -41,6 +41,9 @@ Code
 ./AINews/monthly_summary.md
 📁 Project Structure
 Code
+## 📁 Project Structure
+
+
 Agentic-Chatbot/
 │
 ├── src/
@@ -60,7 +63,7 @@ Agentic-Chatbot/
 │               ├── loadui.py
 │               └── display_results.py
 │
-├── AINews/               # Auto‑generated markdown summaries
+├── AINews/               # Auto-generated markdown summaries
 │   ├── daily_summary.md
 │   ├── weekly_summary.md
 │   └── monthly_summary.md
@@ -68,6 +71,8 @@ Agentic-Chatbot/
 ├── requirements.txt
 ├── README.md
 └── main.py
+
+
 🧠 LangGraph Architecture
 GraphBuilder
 Responsible for constructing three different LangGraph workflows:
