@@ -2,6 +2,7 @@ import os
 from tavily import TavilyClient
 from langchain_core.prompts import ChatPromptTemplate
 
+
 class AINewsNode:
     def __init__(self, llm):
         self.tavily = TavilyClient()
@@ -29,7 +30,7 @@ class AINewsNode:
         return state
 
     def summarize_news(self, state: dict) -> dict:
-        news_items = self.state['news_data']  # FIXED
+        news_items = self.state['news_data']
 
         prompt_template = ChatPromptTemplate.from_messages([
             ("system", """Summarize AI news articles into markdown format. For each item include:
@@ -56,7 +57,6 @@ class AINewsNode:
         frequency = self.state['frequency']
         summary = self.state['summary']
 
-        # FIX: Ensure folder exists
         os.makedirs("AINews", exist_ok=True)
 
         filename = f"./AINews/{frequency.lower()}_summary.md"

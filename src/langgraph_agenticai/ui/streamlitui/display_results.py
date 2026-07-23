@@ -39,19 +39,34 @@ class DisplayResultStreamlit:
                     with st.chat_message("assistant"):
                         st.write(message.content)
 
-
         elif usecase == "AI News":
-            frequency = self.user_message
+            frequency = user_message  # "Daily", "Weekly", "Monthly"
+        
             with st.spinner("Fetching and summarizing news..."):
                 try:
-                    # Read the markdown file
+                    # 1. Run the LangGraph to generate the summary file
+                    initial_state = {
+                        "messages": [HumanMessage(content=frequency)]
+                        }
+        
+                    result_state = graph.invoke(initial_state)
+        
+                            # 2. Get filename from state (set in save_result)
+                    filename = result_state.get("filename")
+                    if not filename:
+                        filename = f"./AINews/{frequency.lower()}_summary.md"
+        
+                        # 3. Read and display markdown
+                        with open(filename, "r") as file:
+                            markdown_content = file.read()
+        
+                        st.markdown(markdown_content, unsafe_allow_html=True)
+        
+                except FileNotFoundError:
                     AI_NEWS_PATH = f"./AINews/{frequency.lower()}_summary.md"
-                    with open(AI_NEWS_PATH, "r") as file:
-                        markdown_content = file.read()
-
-                    # Display the markdown content in Streamlit
-                    st.markdown(markdown_content, unsafe_allow_html=True)
-                except FileNotFoundError as e:
                     st.error(f"News not generated or File not found: {AI_NEWS_PATH}")
                 except Exception as e:
-                    st.error(f"An error occured: {str(e)}")   
+                    st.error(f"An error occured: {str(e)}")
+          
+
+
