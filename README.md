@@ -44,6 +44,9 @@ Code
 ## 📁 Project Structure
 
 
+## 📁 Project Structure
+
+```
 Agentic-Chatbot/
 │
 ├── src/
@@ -71,6 +74,8 @@ Agentic-Chatbot/
 ├── requirements.txt
 ├── README.md
 └── main.py
+```
+
 
 
 🧠 LangGraph Architecture
